@@ -46,11 +46,26 @@ function displayMenuItems(menu) {
 // Callback function for adding an item to the order
 function addToOrder(itemName) {
   // Get the order items list and the order total element from the HTML
+  const orderItemsList = document.getElementById("order-items");
+  const orderTotalElement = document.getElementById("order-total");
+
   // Create a list item for the order
+  const orderItem = document.createElement("li");
+
   // Set the text content of the list item to the item name
+  orderItem.textContent = itemName;
+
   // Append the list item to the order items list
+  orderItemsList.appendChild(orderItem);
+
   // Calculate and update the total price
+  const itemPrice = 90;
+  let currentTotal =
+    parseFloat(orderTotalElement.textContent.replace("Total: R", "")) || 0;
+  currentTotal += itemPrice;
+
   // Update the text content of the order total element with the new total
+  orderTotalElement.textContent = `Total: R${currentTotal.toFixed(2)}`;
 }
 
 // Function to initialize the menu system
